@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Solicitud de nueva tarjeta BCP</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-4">
+    <h2>Solicitud de nueva tarjeta BCP</h2>
+
+    <form th:object="${solicitudTarjeta}" th:action="@{/formulario}" method="post">
+
+
+<div class="form-group">
+    <label for="tipoDocumento">Tipo de documento</label>
+    <select class="form-control" id="tipoDocumento" name="tipoDocumento" th:field="*{tipoDocumento}">
+        <option value="" selected>Seleccione...</option>
+        <option value="CarnetExtranjeria">Carnet de Extranjería</option>
+        <option value="DNI">DNI</option>
+    </select>
+    <span th:if="${#fields.hasErrors('tipoDocumento')}" th:errors="*{tipoDocumento}" class="text-danger"></span>
+</div>
+
+
+
+        
+        <div class="form-group">
+            <label for="numeroDocumento">Número de documento</label>
+            <input type="text" class="form-control" id="numeroDocumento" name="numeroDocumento"
+                   th:field="*{numeroDocumento}">
+            <span th:if="${#fields.hasErrors('numeroDocumento')}" th:errors="*{numeroDocumento}"
+                  class="text-danger"></span>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="apellidoPaterno">Apellido Paterno</label>
+            <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno"
+                   th:field="*{apellidoPaterno}">
+            <span th:if="${#fields.hasErrors('apellidoPaterno')}" th:errors="*{apellidoPaterno}"
+                  class="text-danger"></span>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="apellidoMaterno">Apellido Materno</label>
+            <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno"
+                   th:field="*{apellidoMaterno}">
+            <span th:if="${#fields.hasErrors('apellidoMaterno')}" th:errors="*{apellidoMaterno}"
+                  class="text-danger"></span>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="nombres">Nombres</label>
+            <input type="text" class="form-control" id="nombres" name="nombres"
+                   th:field="*{nombres}">
+            <span th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"
+                  class="text-danger"></span>
+        </div>
+
+       
+<div class="form-group">
+    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento"
+           th:field="*{fechaNacimiento}">
+    <span th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"
+          class="text-danger"></span>
+</div>
+
+      
+<div class="form-group">
+    <label for="sexo">Sexo</label>
+    <select class="form-control" id="sexo" name="sexo" th:field="*{sexo}">
+        <option value="" selected>Seleccione...</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+    </select>
+    <span th:if="${#fields.hasErrors('sexo')}" th:errors="*{sexo}" class="text-danger"></span>
+</div>
+
+
+<div class="form-group">
+    <label for="estadoCivil">Estado Civil</label>
+    <select class="form-control" id="estadoCivil" name="estadoCivil" th:field="*{estadoCivil}">
+        <option value="" selected>Seleccione...</option>
+        <option value="Casado">Casado</option>
+        <option value="Soltero">Soltero</option>
+    </select>
+    <span th:if="${#fields.hasErrors('estadoCivil')}" th:errors="*{estadoCivil}" class="text-danger"></span>
+</div>
+
+
+<div class="form-group">
+    <label for="situacionLaboral">Situación Laboral</label>
+    <select class="form-control" id="situacionLaboral" name="situacionLaboral" th:field="*{situacionLaboral}">
+        <option value="" selected>Seleccione...</option>
+        <option value="Empleado">Empleado</option>
+        <option value="Desempleado">Desempleado</option>
+    </select>
+    <span th:if="${#fields.hasErrors('situacionLaboral')}" th:errors="*{situacionLaboral}" class="text-danger"></span>
+</div>
+
+
+        
+        <div class="form-group">
+            <label for="rucEmpleador">RUC del Empleador</label>
+            <input type="text" class="form-control" id="rucEmpleador" name="rucEmpleador"
+                   th:field="*{rucEmpleador}">
+            <span th:if="${#fields.hasErrors('rucEmpleador')}" th:errors="*{rucEmpleador}"
+                  class="text-danger"></span>
+        </div>
+
+        
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="terminosYCondiciones" name="terminosYCondiciones"
+                   th:field="*{terminosYCondiciones}">
+            <label class="form-check-label" for="terminosYCondiciones">Acepto los términos y condiciones</label>
+            <span th:if="${#fields.hasErrors('terminosYCondiciones')}" th:errors="*{terminosYCondiciones}"
+                  class="text-danger"></span>
+        </div>
+
+        
+        <button type="submit" class="btn btn-primary">Solicitar tarjeta</button>
+
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
